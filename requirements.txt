@@ -9,3 +9,4 @@ setuptools==67.7.1
 sqlparse==0.4.4
 tzdata==2023.3
 wheel==0.40.0
+django-rest-knox==4.2.0
