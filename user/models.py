@@ -93,12 +93,22 @@ class User(AbstractBaseUser, PermissionsMixin):
             "Unselect this instead of deleting accounts."
         ),
     )
+    profile_picture = models.ImageField(
+        verbose_name=_("Profile Picture"),
+        upload_to="user/profile_picture/",
+        default="user/profile_picture/default_profile_pic.jpg",
+        blank=True,
+    )
 
     objects = UserManager()
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "government_id"
     REQUIRED_FIELDS = ["email"]
+
+    @property
+    def profile_picture_url(self):
+        return self.profile_picture.url
 
     def __str__(self):
         return self.government_id
