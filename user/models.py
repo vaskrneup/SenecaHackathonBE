@@ -53,6 +53,15 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     government_id_validator = UnicodeUsernameValidator()
 
+    first_name = models.CharField(
+        verbose_name=_("First Name"),
+        max_length=256,
+    )
+    last_name = models.CharField(
+        verbose_name=_("Last Name"),
+        max_length=256,
+    )
+
     government_id = models.CharField(
         verbose_name=_("Government ID"),
         max_length=150,
